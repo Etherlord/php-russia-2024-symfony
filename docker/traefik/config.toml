@@ -1,0 +1,3 @@
+[[tls.certificates]]
+    certFile = "/config/php-russia-2024-symfony.localhost.crt"
+    keyFile = "/config/php-russia-2024-symfony.localhost.key"
