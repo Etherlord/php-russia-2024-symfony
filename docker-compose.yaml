@@ -8,6 +8,7 @@ services:
         tty: true
         environment:
             COMPOSER_ROOT_VERSION: ${COMPOSER_ROOT_VERSION:-1.0}
+            WELCOME_MESSAGE: "Hello PHP Russia 2024"
         volumes:
             - .:/app:cached
             - ~/.composer:/var/www/.composer
