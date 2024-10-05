@@ -8,6 +8,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "baldinof/roadrunner-bundle": "^3.1.2",
+        "psr/log": "^3.0.2",
         "symfony/console": "^7.1.5",
         "symfony/dotenv": "^7.1.5",
         "symfony/flex": "^2.4.6",
@@ -19,6 +20,7 @@
         "symfony/routing": "^7.1.4",
         "symfony/runtime": "^7.1.1",
         "symfony/twig-bundle": "^7.1.5",
+        "symfony/validator": "^7.1.5",
         "symfony/yaml": "^7.1.5"
     },
     "require-dev": {
