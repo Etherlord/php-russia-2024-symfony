@@ -18,12 +18,14 @@ BIN_CONSOLE            := $(PHP) bin/console
 
 cert:
 	mkcert -install
-	mkcert -cert-file ./docker/traefik/php-russia-2024-symfony.localhost.crt -key-file ./docker/traefik/php-russia-2024-symfony.localhost.key "*.php-russia-2024-symfony.localhost"
+	mkcert -cert-file ./docker/traefik/php-russia-2024-symfony.local.crt -key-file ./docker/traefik/php-russia-2024-symfony.local.key "*.php-russia-2024-symfony.local"
 .PHONY: cert
 
 hosts:
-	sudo sh -c "echo '127.0.0.1 web.php-russia-2024-symfony.localhost' >> /etc/hosts"
-	sudo sh -c "echo '127.0.0.1 traefik.php-russia-2024-symfony.localhost' >> /etc/hosts"
+	sudo sh -c "echo '127.0.0.1 api.php-russia-2024-symfony.local' >> /etc/hosts"
+	sudo sh -c "echo '127.0.0.1 traefik.php-russia-2024-symfony.local' >> /etc/hosts"
+	sudo sh -c "echo '127.0.0.1 minio.php-russia-2024-symfony.local' >> /etc/hosts"
+	sudo sh -c "echo '127.0.0.1 s3.php-russia-2024-symfony.local' >> /etc/hosts"
 .PHONY: hosts
 
 init: cert hosts

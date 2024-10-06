@@ -16,8 +16,10 @@ final class Action
     #[Route(path: '/upload-file', methods: ['POST'])]
     public function __invoke(#[MapUploadedFile] UploadedFile $file, MessageBus $messageBus): Response
     {
-        $messageBus->execute(new UploadFileToS3($file));
+        $response = [
+            'url' => $messageBus->execute(new UploadFileToS3($file)),
+        ];
 
-        return new Response();
+        return new Response(content: json_encode($response));
     }
 }

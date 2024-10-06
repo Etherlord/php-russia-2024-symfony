@@ -15,11 +15,13 @@ services:
         volumes:
             - .:/app:cached
             - ~/.composer:/var/www/.composer
+        extra_hosts:
+            - s3.php-russia-2024-symfony.local:host-gateway
         labels:
             - traefik.enable=true
             - traefik.http.routers.php.service=php
             - traefik.http.routers.php.entryPoints=https
-            - traefik.http.routers.php.rule=Host(`api.php-russia-2024-symfony.localhost`)
+            - traefik.http.routers.php.rule=Host(`api.php-russia-2024-symfony.local`)
             - traefik.http.routers.php.tls=true
             - traefik.http.services.php.loadBalancer.server.port=80
 
@@ -40,12 +42,12 @@ services:
             - traefik.enable=true
             - traefik.http.routers.minio.service=minio
             - traefik.http.routers.minio.entryPoints=https
-            - traefik.http.routers.minio.rule=Host(`minio.php-russia-2024-symfony.localhost`)
+            - traefik.http.routers.minio.rule=Host(`minio.php-russia-2024-symfony.local`)
             - traefik.http.routers.minio.tls=true
             - traefik.http.services.minio.loadBalancer.server.port=9001
             - traefik.http.routers.s3.service=s3
             - traefik.http.routers.s3.entryPoints=https
-            - traefik.http.routers.s3.rule=Host(`s3.php-russia-2024-symfony.localhost`)
+            - traefik.http.routers.s3.rule=Host(`s3.php-russia-2024-symfony.local`)
             - traefik.http.routers.s3.tls=true
             - traefik.http.services.s3.loadBalancer.server.port=9000
 
@@ -69,7 +71,7 @@ services:
         labels:
             - traefik.enable=true
             - traefik.http.routers.traefik.entryPoints=https
-            - traefik.http.routers.traefik.rule=Host(`traefik.php-russia-2024-symfony.localhost`)
+            - traefik.http.routers.traefik.rule=Host(`traefik.php-russia-2024-symfony.local`)
             - traefik.http.routers.traefik.tls=true
             - traefik.http.services.traefik.loadBalancer.server.port=8080
 

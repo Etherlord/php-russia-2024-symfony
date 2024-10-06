@@ -17,12 +17,14 @@ final readonly class UploadFileToS3Handler
     }
 
     #[AsMessageHandler]
-    public function __invoke(UploadFileToS3 $command): void
+    public function __invoke(UploadFileToS3 $command): string
     {
         $this->storage->upload(
             bucket: $this->bucketName,
             filename: $command->file->getClientOriginalName(),
             fileContent: $command->file->getContent(),
         );
+
+        return $this->storage->getPermanentDownloadUrl($this->bucketName, $command->file->getClientOriginalName());
     }
 }

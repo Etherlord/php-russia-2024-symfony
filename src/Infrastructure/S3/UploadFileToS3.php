@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @psalm-immutable
- * @implements Message<void>
+ * @implements Message<string>
  */
 final readonly class UploadFileToS3 implements Message
 {

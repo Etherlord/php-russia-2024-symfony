@@ -75,4 +75,22 @@ final readonly class S3FileStorage
     ): void {
         $this->client->upload($bucket, $filename, $fileContent);
     }
+
+    public function getPermanentDownloadUrl(string $bucket, string $filename): ?string
+    {
+        try {
+            $objectUrl = $this->client->getObjectUrl(
+                bucket: $bucket,
+                key: $filename,
+            );
+        } catch (S3Exception $exception) {
+            if ($exception->getStatusCode() === 404) {
+                return null;
+            }
+
+            throw $exception;
+        }
+
+        return $objectUrl;
+    }
 }

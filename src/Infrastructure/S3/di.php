@@ -13,6 +13,12 @@ use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigura
 return static function (ContainerConfigurator $di): void {
     $services = $di->services();
 
+    $httpVerifyS3 = true;
+
+    if ($di->env() === 'dev') {
+        $httpVerifyS3 = false;
+    }
+
     $services
         ->set(S3Client::class)
         ->args([
@@ -23,6 +29,9 @@ return static function (ContainerConfigurator $di): void {
                 'credentials' => [
                     'key' => '%env(S3_USER)%',
                     'secret' => '%env(S3_PASSWORD)%',
+                ],
+                'http' => [
+                    'verify' => $httpVerifyS3,
                 ],
             ],
         ])
