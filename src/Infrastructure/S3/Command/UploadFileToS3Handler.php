@@ -25,6 +25,10 @@ final readonly class UploadFileToS3Handler
             fileContent: $command->file->getContent(),
         );
 
-        return $this->storage->getPermanentDownloadUrl($this->bucketName, $command->file->getClientOriginalName());
+        return $this
+            ->storage
+            ->getPermanentDownloadUrl($this->bucketName, $command->file->getClientOriginalName())
+            ?? 'file not found'
+        ;
     }
 }

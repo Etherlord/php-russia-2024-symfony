@@ -9,6 +9,7 @@ services:
             minio:
                 condition: service_healthy
         tty: true
+        command: rr serve -d -c .rr.dev.yaml
         environment:
             COMPOSER_ROOT_VERSION: ${COMPOSER_ROOT_VERSION:-1.0}
             WELCOME_MESSAGE: "Hello PHP Russia 2024"
@@ -24,6 +25,20 @@ services:
             - traefik.http.routers.php.rule=Host(`api.php-russia-2024-symfony.local`)
             - traefik.http.routers.php.tls=true
             - traefik.http.services.php.loadBalancer.server.port=80
+
+    php-daemon:
+        build:
+            context: docker/php
+            args:
+                - UID=${UID:-1000}
+                - GID=${GID:-1000}
+        depends_on:
+            minio:
+                condition: service_healthy
+        tty: true
+        command: rr serve -d -c .rr.dev.daemon.yaml
+        volumes:
+            - .:/app:cached
 
     minio:
         image: minio/minio:RELEASE.2024-10-02T17-50-41Z

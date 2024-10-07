@@ -33,5 +33,3 @@ WORKDIR /app
 RUN chown www-data:www-data /app
 
 USER www-data
-
-CMD ["rr", "serve", "-d", "-c", ".rr.dev.yaml"]

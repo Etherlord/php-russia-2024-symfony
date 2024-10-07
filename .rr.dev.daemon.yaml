@@ -1,0 +1,26 @@
+version: "3"
+
+rpc:
+    listen: tcp://0.0.0.0:6001
+
+server:
+    command: bin/console consume
+    relay: pipes
+
+jobs:
+    consume: [ "local" ]
+    pipelines:
+        local:
+            driver: memory
+            config:
+                priority: 10
+                prefetch: 10
+
+logs:
+    mode: development
+    channels:
+        server:
+            level: info # Everything written to worker stderr is logged
+            mode: raw
+        metrics:
+            level: debug
