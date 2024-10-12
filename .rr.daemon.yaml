@@ -16,6 +16,9 @@ jobs:
                 priority: 10
                 prefetch: 10
 
+status:
+    address: 0.0.0.0:2114
+
 logs:
     mode: production
     channels:

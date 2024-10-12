@@ -16,6 +16,9 @@ http:
         dir: "public"
         forbid: [ ".php", ".htaccess" ]
 
+status:
+    address: 0.0.0.0:2114
+
 logs:
     mode: production
     channels:
