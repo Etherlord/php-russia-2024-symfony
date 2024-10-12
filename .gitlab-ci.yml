@@ -6,7 +6,11 @@ stages:
 build:
     stage: build
     script:
+        - mkdir -p config/jwt
+        - cat ${JWT_SECRET_KEY} > config/jwt/private.pem
+        - cat ${JWT_PUBLIC_KEY} > config/jwt/public.pem
         - docker build -f ./docker/php-prod/Dockerfile -t ${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHORT_SHA} .
+        - rm -rf config/jwt
     only:
         - main
     when: on_success
@@ -36,7 +40,10 @@ deploy:
         - ssh gitlab-deploy@192.168.0.8 "docker pull ${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHORT_SHA}"
         - |
           ssh gitlab-deploy@192.168.0.8 "cd /home/gitlab-deploy/php-russia-2024-symfony && \ 
-            WELCOME_MESSAGE='${WELCOME_MESSAGE}' CI_REGISTRY_IMAGE=${CI_REGISTRY_IMAGE} CI_COMMIT_SHORT_SHA=${CI_COMMIT_SHORT_SHA} \
+            WELCOME_MESSAGE='${WELCOME_MESSAGE}' \
+            CI_REGISTRY_IMAGE=${CI_REGISTRY_IMAGE} \
+            CI_COMMIT_SHORT_SHA=${CI_COMMIT_SHORT_SHA} \
+            JWT_PASSPHRASE=${JWT_PASSPHRASE} \
             docker compose -f docker-compose.prod.yaml up --remove-orphans --detach"
         - ssh gitlab-deploy@192.168.0.8 "docker logout ${CI_REGISTRY}"
     only:

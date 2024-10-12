@@ -1,0 +1,19 @@
+security:
+    providers:
+        jwt:
+            lexik_jwt:
+                class: App\Infrastructure\Jwt\LexikJWTIntegration\User
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        api:
+            pattern: ^/api
+            provider: jwt
+            stateless: true
+            jwt: ~
+
+    access_control:
+        - { path: ^/api/v1/authenticate, roles: PUBLIC_ACCESS }
+        - { path: ^/api/v1/welcome, roles: PUBLIC_ACCESS }
+        - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
