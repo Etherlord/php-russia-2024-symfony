@@ -8,3 +8,12 @@ services:
             APP_ENV: prod
         ports:
             - '127.0.0.1:8088:80'
+        command: sh -c "bin/console c:c && rr serve -d -c .rr.yaml"
+    php-daemon:
+        image: ${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHORT_SHA}
+        restart: always
+        environment:
+            COMPOSER_ROOT_VERSION: ${COMPOSER_ROOT_VERSION:-1.0}
+            WELCOME_MESSAGE: ${WELCOME_MESSAGE:-default}
+            APP_ENV: prod
+        command: sh -c "bin/console c:c && rr serve -d -c .rr.daemon.yaml"
