@@ -1,0 +1,16 @@
+## Ignore all
+*
+
+## Except
+!/bin
+!/config
+!/public
+!/src
+!.env
+!.rr.daemon.yaml
+!.rr.dev.daemon.yaml
+!.rr.dev.yaml
+!.rr.yaml
+!composer.json
+!composer.lock
+!symfony.lock
