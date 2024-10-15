@@ -9,7 +9,7 @@ build:
         - mkdir -p config/jwt
         - cat ${JWT_SECRET_KEY} > config/jwt/private.pem
         - cat ${JWT_PUBLIC_KEY} > config/jwt/public.pem
-        - docker build -f ./docker/php-prod/Dockerfile -t ${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHORT_SHA} .
+        - docker build -f ./docker/php/Dockerfile --target prod-php -t ${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHORT_SHA} .
         - rm -rf config/jwt
     only:
         - main
