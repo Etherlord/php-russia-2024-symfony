@@ -43,7 +43,6 @@
         <function name="sleep"/>
         <function name="usleep"/>
         <function name="var_export"/>
-        <function name="empty"/>
     </forbiddenFunctions>
 
     <issueHandlers>
