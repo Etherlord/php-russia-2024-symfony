@@ -15,6 +15,7 @@ services:
         ports:
             - '127.0.0.1:8088:80'
         command: sh -c "bin/console c:c && rr serve -d -c .rr.yaml"
+
     php-daemon:
         image: ${CI_REGISTRY_IMAGE}:${CI_COMMIT_SHORT_SHA}
         restart: always
