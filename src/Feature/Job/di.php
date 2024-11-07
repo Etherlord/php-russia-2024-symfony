@@ -14,6 +14,7 @@ return static function (ContainerConfigurator $di): void {
     $services
         ->set(SendTaskToConsumerHandler::class)
         ->args([
+            '$queue' => '%env(RR_JOB_QUEUE)%',
             '$rpcDsn' => '%env(RR_RPC)%',
         ])
         ->autoconfigure()

@@ -16,6 +16,7 @@ final readonly class SendTaskToConsumerHandler
      * @param non-empty-string $rpcDsn
      */
     public function __construct(
+        private string $queue,
         private string $rpcDsn,
     ) {
     }
@@ -27,7 +28,7 @@ final readonly class SendTaskToConsumerHandler
     public function __invoke(SendTaskToConsumer $command): void
     {
         $jobs = new Jobs(RPC::create($this->rpcDsn));
-        $queue = $jobs->connect('local');
+        $queue = $jobs->connect($this->queue);
         $task = $queue->create(
             name: 'ping',
             payload: $command->message,
