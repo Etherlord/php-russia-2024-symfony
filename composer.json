@@ -63,11 +63,6 @@
             "App\\": "src/"
         }
     },
-    "autoload-dev": {
-        "psr-4": {
-            "App\\Tests\\": "tests/"
-        }
-    },
     "config": {
         "allow-plugins": {
             "ergebnis/composer-normalize": true,
