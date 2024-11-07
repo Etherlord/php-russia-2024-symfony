@@ -13,6 +13,7 @@ use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 final readonly class SendTaskToConsumerHandler
 {
     /**
+     * @param non-empty-string $queue
      * @param non-empty-string $rpcDsn
      */
     public function __construct(
