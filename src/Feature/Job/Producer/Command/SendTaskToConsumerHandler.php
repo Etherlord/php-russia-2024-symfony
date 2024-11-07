@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Feature\Producer\Command;
+namespace App\Feature\Job\Producer\Command;
 
-use App\Feature\Producer\SendTaskToConsumer;
+use App\Feature\Job\Producer\SendTaskToConsumer;
 use Spiral\Goridge\RPC\RPC;
 use Spiral\RoadRunner\Jobs\Exception\JobsException;
 use Spiral\RoadRunner\Jobs\Jobs;

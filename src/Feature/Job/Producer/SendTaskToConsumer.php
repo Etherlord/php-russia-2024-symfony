@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Feature\Producer;
+namespace App\Feature\Job\Producer;
 
 use App\Infrastructure\MessageBus\Message;
 

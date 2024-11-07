@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\ApiV1\SendTaskToConsumer;
 
-use App\Feature\Producer\SendTaskToConsumer;
+use App\Feature\Job\Producer\SendTaskToConsumer;
 use App\Infrastructure\MessageBus\Symfony\MessageBus;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapRequestPayload;

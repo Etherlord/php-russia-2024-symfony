@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Feature\Consumer;
+namespace App\Feature\Job\Consumer;
 
 use Psr\Log\LoggerInterface;
 use Spiral\RoadRunner\Jobs\Consumer;

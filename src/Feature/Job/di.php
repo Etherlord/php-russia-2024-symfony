@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace App\Feature\Producer;
 
-use App\Feature\Producer\Command\SendTaskToConsumerHandler;
+use App\Feature\Job\Consumer\ConsumerCommand;
+use App\Feature\Job\Producer\Command\SendTaskToConsumerHandler;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
 return static function (ContainerConfigurator $di): void {
@@ -15,6 +16,12 @@ return static function (ContainerConfigurator $di): void {
         ->args([
             '$rpcDsn' => '%env(RR_RPC)%',
         ])
+        ->autoconfigure()
+        ->autowire()
+    ;
+
+    $services
+        ->set(ConsumerCommand::class)
         ->autoconfigure()
         ->autowire()
     ;
