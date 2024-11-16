@@ -51,7 +51,7 @@ up: var vendor ## Запустить приложение
 
 down: ## Остановить приложение
 	$(DOCKER_COMPOSE) down --remove-orphans
-.PHONY: stop
+.PHONY: down
 
 ##
 ## Качество кода
