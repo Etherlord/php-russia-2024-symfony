@@ -36,6 +36,12 @@ USER www-data
 
 FROM dev-php AS prod-php
 
+USER root
+
+RUN cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/conf.d/php.ini
+
+USER www-data
+
 ENV COMPOSER_CACHE_DIR=/tmp/composer/cache
 
 COPY ./composer.json ./composer.lock ./symfony.lock ./
