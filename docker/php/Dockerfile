@@ -55,3 +55,5 @@ COPY --chown=www-data:www-data ./ ./
 RUN \
     --mount=type=cache,uid=${UID},gid=${GID},target=/tmp/composer/cache \
     composer dump-autoload --classmap-authoritative --no-dev
+
+RUN bin/console c:c --env=prod
