@@ -38,7 +38,7 @@ FROM dev-php AS prod-php
 
 USER root
 
-RUN cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/conf.d/php.ini
+RUN cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini
 
 USER www-data
 
