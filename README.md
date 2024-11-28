@@ -34,7 +34,7 @@
    ```
    POST https://api.php-russia-2024-symfony.local/api/v1/send-task-to-consumer
    Content-Type: application/json
-   Authorization: Bearer токен, полученный от предыдущего эндпоинта
+   Authorization: Bearer токен, полученный от эндпоинта аутентификации
 
    {
        "message": "TEST"
@@ -57,7 +57,7 @@
    ```
    POST https://api.php-russia-2024-symfony.local/api/v1/upload-file
    Content-Type: multipart/form-data; boundary=WebAppBoundary
-   Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MzA5OTcyMTgsImV4cCI6MTczMTAwMDgxOCwidXNlcm5hbWUiOiJhcGkifQ.N5a2WV4kEXcyaa8HxIRMMhFLiZUO6rT-enDgp6_3jpCyfpsCqm_fM4mII4k-P5zNUnvTBCO9x0y54RW8EsDeAqtHEIgXN_TWGcAHr1htoxDf4w0SgVZDvSrciDCuCcof9lXM3tJWJMgWgOTg2xBQu6pESmKlKMqO8pngt8Ihr4-sTw9RqLHxcsYmx44qdm8CbpzRtR-c4LhpVLDjvilCFSjJRyRx5YPVmYrHBR5dlX1rk2W2WE76g1PJZBiEA1c2ZtMD-Lf3H-_RrELWoEh5Jjp0VRJFjT3rcK80thsqX409VOu5XQT49fEDQHbDOb2q0AuMsQKU098_xH7NIfkXog
+   Authorization: Bearer токен, полученный от эндпоинта аутентификации
 
    --WebAppBoundary
    Content-Disposition: form-data; name="file"; filename="test.xlsx"
