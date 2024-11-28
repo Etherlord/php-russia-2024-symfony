@@ -28,7 +28,11 @@ hosts:
 	sudo sh -c "echo '127.0.0.1 s3.php-russia-2024-symfony.local' >> /etc/hosts"
 .PHONY: hosts
 
-init: cert hosts
+jwt-init:
+	$(BIN_CONSOLE) lexik:jwt:generate-keypair
+.PHONY: jwt-init
+
+init: cert hosts jwt-init
 .PHONY: init
 
 var:
